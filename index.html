@@ -67,8 +67,8 @@
     <section>
         <h2>basics-implementation</h2>
         <ul>
-            <li>javscript is interpreted</li>
-            <li>javscript is single threaded</li>
+            <li>javascript is interpreted</li>
+            <li>javascript is single threaded</li>
             <li>javascript is event driven</li>
         </ul>
     </section>
@@ -89,7 +89,7 @@
     <section>
         <h2>basics-functions</h2>
         <ul>
-            <li>3 ways to exeute function</li>
+            <li>3 ways to execute a function</li>
             <li>a(param1,param2,param3...)</li>
             <li>a.call(this, param1, param2, param3)</li>
             <li>a.apply(this, [params])</li>
@@ -108,48 +108,109 @@
     </section>
 </section>
 <section>
-    <h2>types-overviews</h2>
-    <ul>
-        <li>javascript is weakly typed but supports types</li>
-        <li>use typeof to determine variable type</li>
-        <li>basic types include numbers, strings, dates, logical values</li>
-        <li>you can create and use arrays and custom objects</li>
-    </ul>
-    <aside class="notes">here we could define an array and object and get its type using typeof</aside>
+    <section>
+        <h2>types-overviews</h2>
+        <ul>
+            <li>javascript is weakly typed but supports types</li>
+            <li>use typeof to determine variable type</li>
+            <li>basic types include numbers, strings, dates, logical values</li>
+            <li>you can create and use arrays and custom objects</li>
+        </ul>
+        <aside class="notes">here we could define an array and object and get its type using typeof</aside>
+    </section>
+    <section>
+        <h2>types-arrays</h2>
+        <ul>
+            <li>to define an array you can use</li>
+            <li>var a = new Array();</li>
+            <li>var a = [];</li>
+            <li>to add to an array a.push(0)</li>
+            <li>to remove from an array a.pop()</li>
+        </ul>
+        <aside class="notes">here we could define an array and object and get its type using typeof</aside>
+    </section>
+    <section>
+        <h2>types-objects</h2>
+        <ul>
+            <li>to define an object you can use</li>
+            <li>var o = new Object();</li>
+            <li>var o = {};</li>
+            <li>to add to an object o.prop=val</li>
+            <li>to remove from an object o.delete('prop')</li>
+        </ul>
+        <aside class="notes">here we could define an array and object and get its type using typeof</aside>
+    </section>
+    <section>
+        <h2>types-built-in</h2>
+        <ul>
+            <li>other built-in object (constructors) we can use</li>
+            <li>String for textual data</li>
+            <li>Number for numeric data</li>
+            <li>Date for dates</li>
+            <li>Function for on the fly functions</li>
+            <li>RegExp for regular expressions</li>
+        </ul>
+        <aside class="notes">we may want try to create instances of these objects</aside>
+    </section>
 </section>
 <section>
-    <h2>types-arrays</h2>
-    <ul>
-        <li>to define an array you can use</li>
-        <li>var a = new Array();</li>
-        <li>var a = [];</li>
-        <li>to add to an array a.push(0)</li>
-        <li>to remove from an array a.pop()</li>
-    </ul>
-    <aside class="notes">here we could define an array and object and get its type using typeof</aside>
-</section>
-<section>
-    <h2>types-objects</h2>
-    <ul>
-        <li>to define an object you can use</li>
-        <li>var o = new Object();</li>
-        <li>var o = {};</li>
-        <li>to add to an object o.prop=val</li>
-        <li>to remove from an object o.delete('prop')</li>
-    </ul>
-    <aside class="notes">here we could define an array and object and get its type using typeof</aside>
-</section>
-<section>
-    <h2>types-built-in</h2>
-    <ul>
-        <li>other built-in object (constructors) we can use</li>
-        <li>String for textual data</li>
-        <li>Number for numeric data</li>
-        <li>Date for dates</li>
-        <li>Function for on the fly functions</li>
-        <li>RegExp for regular expressions</li>
-    </ul>
-    <aside class="notes">we may want try to create instances of these objects</aside>
+    <section>
+        <h2>operators</h2>
+        <ul>
+            <li>this sections covers operators that differ from java only</li>
+            <hr/>
+            <li>&amp;&amp;, ||, === and !==</li>
+            <li>new, delete and in</li>
+            <li>instanceof and typeof</li>
+            <li>., [] and ()</li>
+        </ul>
+        <aside class="notes"></aside>
+    </section>
+    <section>
+        <h2>operators-logical</h2>
+        <ul>
+            <li>apart from well know java unary and binary operators</li>
+            <li>&amp;&amp; returns first operator if it can be converted to false</li>
+            <li>|| returns first operator if it can be converted to true</li>
+            <li>=== returns true if value and type are the same</li>
+            <li>!== returns true if value and type are not equal</li>
+        </ul>
+        <aside class="notes">demo difference between == and ===</aside>
+    </section>
+    <section>
+        <h2>operators-objects</h2>
+        <ul>
+            <li>to create an object use <b>new</b> operator <code>new <i>Constructor</i>(<i>param1,param2,param3...</i>)</code>
+            </li>
+            <li>to check if an object has a property use <b>in</b> <code>'length' in 'hello world'</code></li>
+            <li>use delete to delete an object or its property (can't be used to delete var)</li>
+            <li>=== returns true if value and type are the same</li>
+            <li>!== returns true if value and type are not equal</li>
+        </ul>
+        <aside class="notes">demo difference between == and ===</aside>
+    </section>
+    <section>
+        <h2>operators-objects, continued</h2>
+        <ul>
+            <li>typeof returns string containing the type of the operand</li>
+            <li>e.g. <code>typeof 'hello' === "string"</code></li>
+            <li>use instanceof to determine whether an object's prototype is contained in prototype chain of the
+                provided Constructor
+            </li>
+            <li>e.g. ('string instance String) === true</li>
+            <li>note that custom object by default inherit from Object unless you change their prototype</li>
+        </ul>
+        <aside class="notes">show {} instanceof Object, new String instanceof object and String ...</aside>
+    </section>
+    <section>
+        <h2>operators-the rest</h2>
+        <ul>
+            <li>. and [] are used to access properties (in case of arrays [] accesses items in them)</li>
+            <li>e.g. object['prop'] is equal to object.prop</li>
+            <li>() calls a function</li>
+        </ul>
+        <aside class="notes">we could demo here accessing props and items in array</aside>
+    </section>
 </section>
 
 
@@ -324,10 +385,10 @@
     <h2>Clever Quotes</h2>
 
     <p>These guys come in two forms, inline:
-        <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">The
+        <q code="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">The
             nice thing about standards is that there are so many to choose from</q>and
         block:</p>
-    <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+    <blockquote code="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
         For years there has been a theory that millions of monkeys typing at random
         on millions of typewriters would reproduce the entire works of Shakespeare.
         The Internet has proven this theory to be untrue.
