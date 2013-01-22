@@ -44,8 +44,8 @@
         <!--how js works, event loop, allowed characters etc.-->
         <li>types</li>
         <li>operators</li>
-        <li>scopes</li>
         <li>objects</li>
+        <li>scopes</li>
         <li>events</li>
         <li>jquery</li>
         <li>angular</li>
@@ -103,6 +103,7 @@
             <li>a(param1,param2,param3...)</li>
             <li>a.call(this, param1, param2, param3)</li>
             <li>a.apply(this, [params])</li>
+            <li>$ and _ are valid identifiers i.e. function $(){} or var _ = 1 is allowed</li>
         </ul>
         <aside class="notes">here we should try to call a function within a scope of a different object</aside>
     </section>
@@ -212,7 +213,43 @@
         <aside class="notes">we could demo here accessing props and items in array</aside>
     </section>
 </section>
-
+<section>
+    <section>
+        <h2>objects</h2>
+        <ul>
+            <li>javascript's concepts of objects differ from java</li>
+            <li>objects don't have classes but prototypes</li>
+            <li>to create an object you have to call a constructor using the operator <b>new</b></li>
+            <li>object's properties can be accessed via . or []</li>
+        </ul>
+        <aside class="notes">here we can create a new object like
+            <code>
+                function constr(aa) {this.prop1 = aa};
+                var a = new constr('obj1');
+                var b = new constr('obj2');
+                console.log(a.prop1);
+                console.log(b.prop1);
+                console.log(a.prop2);
+                constr.prototype.prop2 = 'added later';
+                console.log(a.prop2);
+                console.log(b.prop2);
+                a.prop2 = 'modified later';
+                console.log(a.prop2);
+                console.log(b.prop2);
+            </code>
+        </aside>
+    </section>
+    <section>
+        <h2>objects - creating new</h2>
+        <ul>
+            <li>to create a new object</li>
+            <li>var obj = {} // prototype will Object</li>
+            <li>var obj = function(){} // prototype will be Function</li>
+            <li>var obj = new function(){} // prototype will be Object</li>
+        </ul>
+        <aside class="notes">explain how to create one of "maps" and how to create constructors</aside>
+    </section>
+</section>
 
 <!-- Example of nested vertical slides -->
 <section>
