@@ -76,14 +76,15 @@
         <h2>basics-functions</h2>
         <ul>
             <li>3 ways to define/declare a function</li>
-            <li>function a(){}</li>
+            <li>function a(){} or anonymously function(){}</li>
             <li>var a = function a(){}</li>
             <li>var a = new Function a('')</li>
             <li>functions can take functions as parameters an can return functions</li>
             <li>all parameters are optional</li>
         </ul>
         <aside class="notes">here we should try to define a function and ty to call it with no argument, more than
-            declared argumets and less than defined arguments. Use arguments to access the parameters.
+            declared arguments and less than defined arguments. Use arguments to access the parameters. We can also demo
+            anonymous function and its execution.
         </aside>
     </section>
     <section>
@@ -248,6 +249,41 @@
             <li>var obj = new function(){} // prototype will be Object</li>
         </ul>
         <aside class="notes">explain how to create one of "maps" and how to create constructors</aside>
+    </section>
+    <section>
+        <h2>objects - adding properties</h2>
+        <ul>
+            <li>using constructor e.g. function Constructor (a, b, c) {this.a = a; this.b = b; this.c = c}</li>
+            <li>using "." or [] e.g. var a = {}; a.prop1 = 'val1'; a[prop2] = 'val2'</li>
+            <li>using prototype var a = {}; a.prototype.prop1 = 'val1'</li>
+            <li>functions are values in JS hence: var a = {}; a.fun1 = function (){return 'val1'}; a.fun1</li>
+        </ul>
+        <aside class="notes">explain how to create one of "maps" and how to create constructors</aside>
+    </section>
+    <section>
+        <h2>objects - enumerating</h2>
+        <ul>
+            <li>for - in loop e.g. for (var propName in object) {console.log(propName + '=' + object[propName])}</li>
+            <li>Object.keys() e.g. var a = {b:'b'}; Object.keys(a);</li>
+            <li>Object.getOwnPropertyNames()</li>
+        </ul>
+        <aside class="notes"></aside>
+    </section>
+    <section>
+        <h2>objects - inheritance</h2>
+        <ul>
+            <li>function Constr1(val1){this.prop1=val1;this.print=function(){alert(this.prop1)}}</li>
+            <li>function Constr2(val1,val2){Constr1.call(this, val1);this.prop2=val2;print2=function(){alert(this.prop1
+                + '-' + this.prop1)}}
+            </li>
+            <li>Constr2.prototype=Object.create(Constr1.prototype);</li>
+            <li>var obj = new Constr1('a', 'b');</li>
+            <li>obj.print();obj.print2()</li>
+        </ul>
+        <aside class="notes">this will not work - add
+            Constr2.prototype.constructor = Constr2;
+            Constr2.prototype.print2=function(){alert(this.prop1 + '-' + this.prop2)}
+        </aside>
     </section>
 </section>
 
