@@ -41,7 +41,6 @@
     <h2>what's covered</h2>
     <ul>
         <li>basics</li>
-        <!--how js works, event loop, allowed characters etc.-->
         <li>types</li>
         <li>operators</li>
         <li>objects</li>
@@ -76,10 +75,17 @@
         <h2>basics-functions</h2>
         <ul>
             <li>3 ways to define/declare a function</li>
-            <li>function a(){} or anonymously function(){}</li>
-            <li>var a = function a(){}</li>
-            <li>var a = new Function a('')</li>
-            <li>functions can take functions as parameters an can return functions</li>
+            <li><pre><code class="javascript">function a(){}
+                // anonymously
+                function(){}</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">var a = function a(){}</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">var a = new Function a('')</code></pre>
+            </li>
+            <li>functions can take functions as parameters and can return functions</li>
             <li>all parameters are optional</li>
         </ul>
         <aside class="notes">here we should try to define a function and ty to call it with no argument, more than
@@ -91,9 +97,15 @@
         <h2>basics-functions</h2>
         <ul>
             <li>3 ways to execute a function</li>
-            <li>a(param1,param2,param3...)</li>
-            <li>a.call(this, param1, param2, param3)</li>
-            <li>a.apply(this, [params])</li>
+            <li>
+                <pre><code class="javascript">a(param1,param2,param3...)</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">a.call(this, param1, param2, param3)</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">a.apply(this, [params])</code></pre>
+            </li>
         </ul>
         <aside class="notes">here we should try to call a function within a scope of a different object</aside>
     </section>
@@ -101,9 +113,6 @@
         <h2>basics-miscs</h2>
         <ul>
             <li>semicolons are optional as long as intepreter can fix errors by adding them at the line end</li>
-            <li>a(param1,param2,param3...)</li>
-            <li>a.call(this, param1, param2, param3)</li>
-            <li>a.apply(this, [params])</li>
             <li>$ and _ are valid identifiers i.e. function $(){} or var _ = 1 is allowed</li>
         </ul>
         <aside class="notes">here we should try to call a function within a scope of a different object</aside>
@@ -114,7 +123,7 @@
         <h2>types-overviews</h2>
         <ul>
             <li>javascript is weakly typed but supports types</li>
-            <li>use typeof to determine variable type</li>
+            <li>use <code>typeof</code> to determine variable type</li>
             <li>basic types include numbers, strings, dates, logical values</li>
             <li>you can create and use arrays and custom objects</li>
         </ul>
@@ -124,10 +133,14 @@
         <h2>types-arrays</h2>
         <ul>
             <li>to define an array you can use</li>
-            <li>var a = new Array();</li>
-            <li>var a = [];</li>
-            <li>to add to an array a.push(0)</li>
-            <li>to remove from an array a.pop()</li>
+            <li>
+                <pre><code class="javascript">var a = new Array();</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">var a = [];</code></pre>
+            </li>
+            <li>to add to an array <code>a.push(0)</code></li>
+            <li>to remove from an array <code>a.pop()</code></li>
         </ul>
         <aside class="notes">here we could define an array and object and get its type using typeof</aside>
     </section>
@@ -135,9 +148,14 @@
         <h2>types-objects</h2>
         <ul>
             <li>to define an object you can use</li>
-            <li>var o = new Object();</li>
-            <li>var o = {};</li>
+            <li>
+                <pre><code class="javascript">var o = new Object();</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">var o = {};</code></pre>
+            </li>
             <li>to add to an object o.prop=val</li>
+            <li>to add to an object o['prop']=val</li>
             <li>to remove from an object o.delete('prop')</li>
         </ul>
         <aside class="notes">here we could define an array and object and get its type using typeof</aside>
@@ -186,10 +204,8 @@
             </li>
             <li>to check if an object has a property use <b>in</b> <code>'length' in 'hello world'</code></li>
             <li>use delete to delete an object or its property (can't be used to delete var)</li>
-            <li>=== returns true if value and type are the same</li>
-            <li>!== returns true if value and type are not equal</li>
         </ul>
-        <aside class="notes">demo difference between == and ===</aside>
+        <aside class="notes"></aside>
     </section>
     <section>
         <h2>operators-objects, continued</h2>
@@ -199,7 +215,9 @@
             <li>use instanceof to determine whether an object's prototype is contained in prototype chain of the
                 provided Constructor
             </li>
-            <li>e.g. ('string instance String) === true</li>
+            <li>
+                <pre><code class="javascript">('string' instance String) === true</code></pre>
+            </li>
             <li>note that custom object by default inherit from Object unless you change their prototype</li>
         </ul>
         <aside class="notes">show {} instanceof Object, new String instanceof object and String ...</aside>
@@ -224,7 +242,7 @@
             <li>object's properties can be accessed via . or []</li>
         </ul>
         <aside class="notes">here we can create a new object like
-            <code>
+            <code class="javascript">
                 function constr(aa) {this.prop1 = aa};
                 var a = new constr('obj1');
                 var b = new constr('obj2');
@@ -244,9 +262,9 @@
         <h2>objects - creating new</h2>
         <ul>
             <li>to create a new object</li>
-            <li>var obj = {} // prototype will Object</li>
-            <li>var obj = function(){} // prototype will be Function</li>
-            <li>var obj = new function(){} // prototype will be Object</li>
+            <pre><code class="javascript">var obj = {} // prototype will Object</code></pre>
+            <pre><code class="javascript">var obj = function(){} // prototype will be Function</code></pre>
+            <pre><code class="javascript">var obj = new function(){} // prototype will be Object</code></pre>
         </ul>
         <aside class="notes">explain how to create one of "maps" and how to create constructors</aside>
     </section>
@@ -263,8 +281,13 @@
     <section>
         <h2>objects - enumerating</h2>
         <ul>
-            <li>for - in loop e.g. for (var propName in object) {console.log(propName + '=' + object[propName])}</li>
-            <li>Object.keys() e.g. var a = {b:'b'}; Object.keys(a);</li>
+            <li>for - in loop
+                <pre><code class="javascript">for (var propName in object) {console.log(propName + '=' +
+                    object[propName])}</code></pre>
+            </li>
+            <li>Object.keys()
+                <pre><code class="javascript">var a = {b:'b'}; Object.keys(a);</code></pre>
+            </li>
             <li>Object.getOwnPropertyNames()</li>
         </ul>
         <aside class="notes"></aside>
@@ -286,7 +309,14 @@
         </aside>
     </section>
 </section>
-
+<section>
+    <section>
+        <h2>scopes</h2>
+        <li>how to define</li>
+        <li>how to access</li>
+        <li>self-calling code/li>
+    </section>
+</section>
 <!-- Example of nested vertical slides -->
 <section>
     <section>
