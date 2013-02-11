@@ -86,6 +86,7 @@
                 <pre><code class="javascript">var a = new Function a('')</code></pre>
             </li>
             <li>functions can take functions as parameters and can return functions</li>
+
             <li>all parameters are optional</li>
         </ul>
         <aside class="notes">here we should try to define a function and ty to call it with no argument, more than
@@ -172,6 +173,27 @@
         </ul>
         <aside class="notes">we may want try to create instances of these objects</aside>
     </section>
+    <section>
+        <h2>types-the rest</h2>
+        <ul>
+            <li>
+                <pre><code class="javascript">1/0 === Infinity</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">-1/0 === -Infinity</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">NaN !== NaN</code></pre>
+            </li>
+            <li>String for textual data</li>
+            <li>Number for numeric data</li>
+            <li>Date for dates</li>
+            <li>Function for on the fly functions</li>
+            <li>RegExp for regular expressions</li>
+        </ul>
+        <aside class="notes">we may want try to create instances of these objects</aside>
+    </section>
+    <
 </section>
 <section>
     <section>
@@ -295,17 +317,25 @@
     <section>
         <h2>objects - inheritance</h2>
         <ul>
-            <li>function Constr1(val1){this.prop1=val1;this.print=function(){alert(this.prop1)}}</li>
-            <li>function Constr2(val1,val2){Constr1.call(this, val1);this.prop2=val2;print2=function(){alert(this.prop1
-                + '-' + this.prop1)}}
+            <li><pre><code class="javascript">
+                function Constr1(val1){
+                this.prop1=val1;
+                this.print=function(){alert(this.prop1)}
+                }
+
+                function Constr2(val1,val2){
+                Constr1.call(this, val1);
+                this.prop2=val2;
+                this.print2=function(){alert(this.prop1 + '-' + this.prop2)}
+                }
+                Constr2.prototype=Object.create(Constr1.prototype);
+                var obj = new Constr2('a', 'b');
+                obj.print();
+                obj.print2();
+            </code></pre>
             </li>
-            <li>Constr2.prototype=Object.create(Constr1.prototype);</li>
-            <li>var obj = new Constr1('a', 'b');</li>
-            <li>obj.print();obj.print2()</li>
         </ul>
-        <aside class="notes">this will not work - add
-            Constr2.prototype.constructor = Constr2;
-            Constr2.prototype.print2=function(){alert(this.prop1 + '-' + this.prop2)}
+        <aside class="notes">
         </aside>
     </section>
 </section>
@@ -314,7 +344,69 @@
         <h2>scopes</h2>
         <li>how to define</li>
         <li>how to access</li>
-        <li>self-calling code/li>
+        <li>self-calling code</li>
+    </section>
+    <section>
+        <h2>scopes</h2>
+        <ul>
+            <li>javascript code runs in scopes</li>
+            <li>if no scope is define, javascript uses main scope called "global"</li>
+            <li>
+                <pre><code>window === global // true</code></pre>
+            </li>
+            <li>
+                <pre><code>window.alert = function(){window.confirm('we\'ve got a problem!')};alert('hello
+                    world');</code></pre>
+            </li>
+            <li>global scope can get cluttered quickly, we better define our own scopes</li>
+        </ul>
+        <aside class="notes">
+        </aside>
+    </section>
+    <section>
+        <h2>scopes-definition</h2>
+        <ul>
+            <li><pre><code class="javascript">
+                var scope = {var1:'val1'};
+                alert(scope.var1);
+            </code></pre>
+            </li>
+            <li>safer to do so is to use jQuery.extend</li>
+            <li><pre><code class="javascript">
+                var scope = jQuery.extend({}, {var1:'val1'});
+                alert(scope.var1);
+            </code></pre>
+            </li>
+        </ul>
+        <aside class="notes">
+        </aside>
+    </section>
+    <section>
+        <h2>scopes-accessing</h2>
+        <ul>
+            <li>scopes can be nested</li>
+            <li>properties deeper in scopes can access properties higher, but not other way round</li>
+            <li>properties deeper in scopes can overload properties higher</li>
+        </ul>
+        <aside class="notes">
+        </aside>
+    </section>
+    <section>
+        <h2>scopes-self calling code</h2>
+        <ul>
+            <li>scopes can be nested</li>
+            <li><pre><code>
+                function a () {alert('a called')}
+                a = (function(a){
+                return function(){
+                alert('about to call a');
+                a();}})(a);
+                a();
+            </code></pre>
+            </li>
+        </ul>
+        <aside class="notes">
+        </aside>
     </section>
 </section>
 <!-- Example of nested vertical slides -->
