@@ -419,7 +419,27 @@
     </section>
     <section>
         <h2>events - listening for</h2>
-        <li></li>
+        <li>in IE element (or simply event emitter)
+            <pre><code class="javascript">element.attachEvent('event', handler);</code></pre>
+        </li>
+        <li>in newer browsers
+            <pre><code class="javascript">element.addEventListener('event', handler);</code></pre>
+        </li>
+    </section>
+    <section>
+        <h2>events - triggering</h2>
+        <li>to trigger an event use
+            <pre><code class="javascript">element.dispatchEvent(event);</code></pre>
+        </li>
+        <li><pre><code class="javascript">
+            var event = document.createEvent('MouseEvent');
+            event.initMouseEvent(.....);
+            element.dispatchEvent(event);
+        </code></pre>
+        </li>
+        <li>in IE you can use
+            <pre><code class="javascript">element.event(); e.g. element.click();</code></pre>
+        </li>
     </section>
 </section>
 <!-- Example of nested vertical slides -->
