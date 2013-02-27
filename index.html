@@ -1,74 +1,819 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="JavaScript tutorial : MO introduction to advanced JavaScript" />
+<head>
+    <meta charset="utf-8">
+    <title>javascript - hands on advanced course</title>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"
+            />
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/default.css" id="theme">
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+        document.write('<link rel="stylesheet" href="css/print/' + (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper') + '.css" type="text/css" media="print">');
+    </script>
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+</head>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+<body>
+<div class="reveal">
+<!-- Any section element inside of this container is displayed as a slide
+-->
+<div class="slides">
+<section>
+    <h1>advanced javascript</h1>
 
-    <title>JavaScript tutorial</title>
-  </head>
+    <h3>a journey from alert to high order functions</h3>
 
-  <body>
+    <p>
+        <small>Created by
+            <a href="http://www.linek.co.uk">Ondrej Linek</a>/
+            <a href="http://twitter.com/defectus">@defectus</a>
+        </small>
+    </p>
+</section>
+<section>
+    <h2>what's covered</h2>
+    <ul>
+        <li>basics</li>
+        <li>types</li>
+        <li>operators</li>
+        <li>objects</li>
+        <li>scopes</li>
+        <li>events</li>
+        <li>jquery</li>
+        <li>angular</li>
+    </ul>
+</section>
+<section>
+    <section>
+        <h2>basics</h2>
+        <ul>
+            <li>JavaScript is an interpreted functional language with a hint of objects</li>
+            <li>invented in 1996</li>
+            <li>implementation of javascript runs in browsers and command line</li>
+        </ul>
+        <aside class="notes">Oh hey, these are some notes. They'll be hidden in your presentation,
+            but you can see them if you open the speaker notes window (hit 's' on your
+            keyboard).
+        </aside>
+    </section>
+    <section>
+        <h2>basics-implementation</h2>
+        <ul>
+            <li>javascript is interpreted</li>
+            <li>javascript is single threaded</li>
+            <li>javascript is event driven</li>
+        </ul>
+    </section>
+    <section>
+        <h2>basics-functions</h2>
+        <ul>
+            <li>3 ways to define/declare a function</li>
+            <li><pre><code class="javascript">function a(){}
+                // anonymously
+                function(){}</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">var a = function a(){}</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">var a = new Function a('')</code></pre>
+            </li>
+            <li>functions can take functions as parameters and can return functions</li>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/defectus/js_tutor">View on GitHub</a>
+            <li>all parameters are optional</li>
+        </ul>
+        <aside class="notes">here we should try to define a function and ty to call it with no argument, more than
+            declared arguments and less than defined arguments. Use arguments to access the parameters. We can also demo
+            anonymous function and its execution.
+        </aside>
+    </section>
+    <section>
+        <h2>basics-functions</h2>
+        <ul>
+            <li>3 ways to execute a function</li>
+            <li>
+                <pre><code class="javascript">a(param1,param2,param3...)</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">a.call(this, param1, param2, param3)</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">a.apply(this, [params])</code></pre>
+            </li>
+        </ul>
+        <aside class="notes">here we should try to call a function within a scope of a different object</aside>
+    </section>
+    <section>
+        <h2>basics-miscs</h2>
+        <ul>
+            <li>semicolons are optional as long as intepreter can fix errors by adding them at the line end</li>
+            <li>$ and _ are valid identifiers i.e. function $(){} or var _ = 1 is allowed</li>
+        </ul>
+        <aside class="notes">here we should try to call a function within a scope of a different object</aside>
+    </section>
+</section>
+<section>
+    <section>
+        <h2>types-overviews</h2>
+        <ul>
+            <li>javascript is weakly typed but supports types</li>
+            <li>use <code>typeof</code> to determine variable type</li>
+            <li>basic types include numbers, strings, dates, logical values</li>
+            <li>you can create and use arrays and custom objects</li>
+        </ul>
+        <aside class="notes">here we could define an array and object and get its type using typeof</aside>
+    </section>
+    <section>
+        <h2>types-arrays</h2>
+        <ul>
+            <li>to define an array you can use</li>
+            <li>
+                <pre><code class="javascript">var a = new Array();</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">var a = [];</code></pre>
+            </li>
+            <li>to add to an array <code>a.push(0)</code></li>
+            <li>to remove from an array <code>a.pop()</code></li>
+        </ul>
+        <aside class="notes">here we could define an array and object and get its type using typeof</aside>
+    </section>
+    <section>
+        <h2>types-objects</h2>
+        <ul>
+            <li>to define an object you can use</li>
+            <li>
+                <pre><code class="javascript">var o = new Object();</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">var o = {};</code></pre>
+            </li>
+            <li>to add to an object o.prop=val</li>
+            <li>to add to an object o['prop']=val</li>
+            <li>to remove from an object o.delete('prop')</li>
+        </ul>
+        <aside class="notes">here we could define an array and object and get its type using typeof</aside>
+    </section>
+    <section>
+        <h2>types-built-in</h2>
+        <ul>
+            <li>other built-in object (constructors) we can use</li>
+            <li>String for textual data</li>
+            <li>Number for numeric data</li>
+            <li>Date for dates</li>
+            <li>Function for on the fly functions</li>
+            <li>RegExp for regular expressions</li>
+        </ul>
+        <aside class="notes">we may want try to create instances of these objects</aside>
+    </section>
+    <section>
+        <h2>types-the rest</h2>
+        <ul>
+            <li>
+                <pre><code class="javascript">1/0 === Infinity</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">-1/0 === -Infinity</code></pre>
+            </li>
+            <li>
+                <pre><code class="javascript">NaN !== NaN</code></pre>
+            </li>
+            <li>String for textual data</li>
+            <li>Number for numeric data</li>
+            <li>Date for dates</li>
+            <li>Function for on the fly functions</li>
+            <li>RegExp for regular expressions</li>
+        </ul>
+        <aside class="notes">we may want try to create instances of these objects</aside>
+    </section>
+    <
+</section>
+<section>
+    <section>
+        <h2>operators</h2>
+        <ul>
+            <li>this sections covers operators that differ from java only</li>
+            <hr/>
+            <li>&amp;&amp;, ||, === and !==</li>
+            <li>new, delete and in</li>
+            <li>instanceof and typeof</li>
+            <li>., [] and ()</li>
+        </ul>
+        <aside class="notes"></aside>
+    </section>
+    <section>
+        <h2>operators-logical</h2>
+        <ul>
+            <li>apart from well know java unary and binary operators</li>
+            <li>&amp;&amp; returns first operator if it can be converted to false</li>
+            <li>|| returns first operator if it can be converted to true</li>
+            <li>=== returns true if value and type are the same</li>
+            <li>!== returns true if value and type are not equal</li>
+        </ul>
+        <aside class="notes">demo difference between == and ===</aside>
+    </section>
+    <section>
+        <h2>operators-objects</h2>
+        <ul>
+            <li>to create an object use <b>new</b> operator <code>new <i>Constructor</i>(<i>param1,param2,param3...</i>)</code>
+            </li>
+            <li>to check if an object has a property use <b>in</b> <code>'length' in 'hello world'</code></li>
+            <li>use delete to delete an object or its property (can't be used to delete var)</li>
+        </ul>
+        <aside class="notes"></aside>
+    </section>
+    <section>
+        <h2>operators-objects, continued</h2>
+        <ul>
+            <li>typeof returns string containing the type of the operand</li>
+            <li>e.g. <code>typeof 'hello' === "string"</code></li>
+            <li>use instanceof to determine whether an object's prototype is contained in prototype chain of the
+                provided Constructor
+            </li>
+            <li>
+                <pre><code class="javascript">('string' instance String) === true</code></pre>
+            </li>
+            <li>note that custom object by default inherit from Object unless you change their prototype</li>
+        </ul>
+        <aside class="notes">show {} instanceof Object, new String instanceof object and String ...</aside>
+    </section>
+    <section>
+        <h2>operators-the rest</h2>
+        <ul>
+            <li>. and [] are used to access properties (in case of arrays [] accesses items in them)</li>
+            <li>e.g. object['prop'] is equal to object.prop</li>
+            <li>() calls a function</li>
+        </ul>
+        <aside class="notes">we could demo here accessing props and items in array</aside>
+    </section>
+</section>
+<section>
+    <section>
+        <h2>objects</h2>
+        <ul>
+            <li>javascript's concepts of objects differ from java</li>
+            <li>objects don't have classes but prototypes</li>
+            <li>to create an object you have to call a constructor using the operator <b>new</b></li>
+            <li>object's properties can be accessed via . or []</li>
+        </ul>
+        <aside class="notes">here we can create a new object like
+            <code class="javascript">
+                function constr(aa) {this.prop1 = aa};
+                var a = new constr('obj1');
+                var b = new constr('obj2');
+                console.log(a.prop1);
+                console.log(b.prop1);
+                console.log(a.prop2);
+                constr.prototype.prop2 = 'added later';
+                console.log(a.prop2);
+                console.log(b.prop2);
+                a.prop2 = 'modified later';
+                console.log(a.prop2);
+                console.log(b.prop2);
+            </code>
+        </aside>
+    </section>
+    <section>
+        <h2>objects - creating new</h2>
+        <ul>
+            <li>to create a new object</li>
+            <pre><code class="javascript">var obj = {} // prototype will Object</code></pre>
+            <pre><code class="javascript">var obj = function(){} // prototype will be Function</code></pre>
+            <pre><code class="javascript">var obj = new function(){} // prototype will be Object</code></pre>
+        </ul>
+        <aside class="notes">explain how to create one of "maps" and how to create constructors</aside>
+    </section>
+    <section>
+        <h2>objects - adding properties</h2>
+        <ul>
+            <li>using constructor e.g. function Constructor (a, b, c) {this.a = a; this.b = b; this.c = c}</li>
+            <li>using "." or [] e.g. var a = {}; a.prop1 = 'val1'; a[prop2] = 'val2'</li>
+            <li>using prototype var a = {}; a.prototype.prop1 = 'val1'</li>
+            <li>functions are values in JS hence: var a = {}; a.fun1 = function (){return 'val1'}; a.fun1</li>
+        </ul>
+        <aside class="notes">explain how to create one of "maps" and how to create constructors</aside>
+    </section>
+    <section>
+        <h2>objects - enumerating</h2>
+        <ul>
+            <li>for - in loop
+                <pre><code class="javascript">for (var propName in object) {console.log(propName + '=' +
+                    object[propName])}</code></pre>
+            </li>
+            <li>Object.keys()
+                <pre><code class="javascript">var a = {b:'b'}; Object.keys(a);</code></pre>
+            </li>
+            <li>Object.getOwnPropertyNames()</li>
+        </ul>
+        <aside class="notes"></aside>
+    </section>
+    <section>
+        <h2>objects - inheritance</h2>
+        <ul>
+            <li><pre><code class="javascript">
+                function Constr1(val1){
+                this.prop1=val1;
+                this.print=function(){alert(this.prop1)}
+                }
 
-          <h1 id="project_title">JavaScript tutorial</h1>
-          <h2 id="project_tagline">MO introduction to advanced JavaScript</h2>
+                function Constr2(val1,val2){
+                Constr1.call(this, val1);
+                this.prop2=val2;
+                this.print2=function(){alert(this.prop1 + '-' + this.prop2)}
+                }
+                Constr2.prototype=Object.create(Constr1.prototype);
+                var obj = new Constr2('a', 'b');
+                obj.print();
+                obj.print2();
+            </code></pre>
+            </li>
+        </ul>
+        <aside class="notes">
+        </aside>
+    </section>
+</section>
+<section>
+    <section>
+        <h2>scopes</h2>
+        <li>how to define</li>
+        <li>how to access</li>
+        <li>self-calling code</li>
+    </section>
+    <section>
+        <h2>scopes</h2>
+        <ul>
+            <li>javascript code runs in scopes</li>
+            <li>if no scope is define, javascript uses main scope called "global"</li>
+            <li>
+                <pre><code>window === global // true</code></pre>
+            </li>
+            <li>
+                <pre><code>window.alert = function(){window.confirm('we\'ve got a problem!')};alert('hello
+                    world');</code></pre>
+            </li>
+            <li>global scope can get cluttered quickly, we better define our own scopes</li>
+        </ul>
+        <aside class="notes">
+        </aside>
+    </section>
+    <section>
+        <h2>scopes-definition</h2>
+        <ul>
+            <li><pre><code class="javascript">
+                var scope = {var1:'val1'};
+                alert(scope.var1);
+            </code></pre>
+            </li>
+            <li>safer to do so is to use jQuery.extend</li>
+            <li><pre><code class="javascript">
+                var scope = jQuery.extend({}, {var1:'val1'});
+                alert(scope.var1);
+            </code></pre>
+            </li>
+        </ul>
+        <aside class="notes">
+        </aside>
+    </section>
+    <section>
+        <h2>scopes-accessing</h2>
+        <ul>
+            <li>scopes can be nested</li>
+            <li>properties deeper in scopes can access properties higher, but not other way round</li>
+            <li>properties deeper in scopes can overload properties higher</li>
+        </ul>
+        <aside class="notes">
+        </aside>
+    </section>
+    <section>
+        <h2>scopes-self calling code</h2>
+        <ul>
+            <li>scopes can be nested</li>
+            <li><pre><code>
+                function a () {alert('a called')}
+                a = (function(a){
+                return function(){
+                alert('about to call a');
+                a();}})(a);
+                a();
+            </code></pre>
+            </li>
+        </ul>
+        <aside class="notes">
+        </aside>
+    </section>
+</section>
+<section>
+    <section>
+        <h2>events</h2>
+        <li>events are the heart of javascript</li>
+        <li>we'll focus on DOM events, event-loop machines such as node.js can be discussed later</li>
+        <li>listening for events</li>
+        <li>creating events</li>
+    </section>
+    <section>
+        <h2>events - listening for</h2>
+        <li>in IE element (or simply event emitter)
+            <pre><code class="javascript">element.attachEvent('event', handler);</code></pre>
+        </li>
+        <li>in newer browsers
+            <pre><code class="javascript">element.addEventListener('event', handler);</code></pre>
+        </li>
+    </section>
+    <section>
+        <h2>events - triggering</h2>
+        <li>to trigger an event use
+            <pre><code class="javascript">element.dispatchEvent(event);</code></pre>
+        </li>
+        <li><pre><code class="javascript">
+            var event = document.createEvent('MouseEvent');
+            event.initMouseEvent(.....);
+            element.dispatchEvent(event);
+        </code></pre>
+        </li>
+        <li>in IE you can use
+            <pre><code class="javascript">element.event(); e.g. element.click();</code></pre>
+        </li>
+    </section>
+</section>
+<!-- Example of nested vertical slides -->
+<section>
+    <section>
+        <h2>Vertical Slides</h2>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/defectus/js_tutor/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/defectus/js_tutor/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+        <p>Slides can be nested inside of other slides, try pressing
+            <a href="#" class="navigate-down">down</a>.</p>
+        <a href="#" class="image navigate-down">
+            <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png"
+                 alt="Down arrow">
+        </a>
+    </section>
+    <section>
+        <h2>Basement Level 1</h2>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>Welcome to GitHub Pages.</h3>
+        <p>Press down or up to navigate.</p>
+    </section>
+    <section>
+        <h2>Basement Level 2</h2>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
+        <p>Cornify</p>
+        <a class="test" href="http://cornify.com">
+            <img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif"
+                 alt="Unicorn">
+        </a>
+    </section>
+    <section>
+        <h2>Basement Level 3</h2>
 
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
+        <p>That's it, time to go back up.</p>
+        <a href="#/2" class="image">
+            <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow"
+                 style="-webkit-transform: rotate(180deg);">
+        </a>
+    </section>
+</section>
+<section>
+    <h2>Point of View</h2>
 
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
+    <p>Press
+        <strong>ESC</strong>to enter the slide overview. Hold down alt and click on any
+        element to zoom in on it using
+        <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.</p>
+</section>
+<section>
+    <h2>rvl.io</h2>
 
-<h3>Designer Templates</h3>
+    <p>If you don't like writing slides in HTML you can use the online editor
+        <a
+                href="http://www.rvl.io" target="_blank">rvl.io</a>.</p>
+</section>
+<section>
+    <h2>Works in Mobile Safari</h2>
 
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
+    <p>Try it out! You can swipe through the slides and pinch your way to the
+        overview.</p>
+</section>
+<section>
+    <h2>Marvelous Unordered List</h2>
+    <ul>
+        <li>No order here</li>
+        <li>Or here</li>
+        <li>Or here</li>
+        <li>Or here</li>
+    </ul>
+</section>
+<section>
+    <h2>Fantastic Ordered List</h2>
+    <ol>
+        <li>One is smaller than...</li>
+        <li>Two is smaller than...</li>
+        <li>Three!</li>
+    </ol>
+</section>
+<section data-markdown>
+    <script type="text/template">
+        ##Markdown support
 
-<h3>Rather Drive Stick?</h3>
+        For those of you who like that sort of thing.Instructions and a bit more info available[here](https:
+        //github.com/hakimel/reveal.js#markdown).
 
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
+        <
+        section data - markdown > ##Markdown support
 
-<h3>Authors and Contributors</h3>
+        For those of you who like that sort of thing.
+        Instructions and a bit more info available[here](https: //github.com/hakimel/reveal.js#markdown).
+        <
+        /section>
 
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
+    </script>
+</section>
+<section id="transitions">
+    <h2>Transition Styles</h2>
 
-<h3>Support or Contact</h3>
+    <p>You can select from different transitions, like:
+        <br>
+        <a href="?transition=cube#/transitions">Cube</a>-
+        <a href="?transition=page#/transitions">Page</a>-
+        <a href="?transition=concave#/transitions">Concave</a>-
+        <a href="?transition=zoom#/transitions">Zoom</a>-
+        <a href="?transition=linear#/transitions">Linear</a>-
+        <a href="?transition=none#/transitions">None</a>-
+        <a href="?#/transitions">Default</a>
+    </p>
+</section>
+<section id="themes">
+    <h2>Themes</h2>
 
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
-      </section>
-    </div>
+    <p>Reveal.js comes with a few themes built in:
+        <br>
+        <a href="?theme=sky#/themes">Sky</a>-
+        <a href="?theme=beige#/themes">Beige</a>-
+        <a href="?theme=simple#/themes">Simple</a>-
+        <a href="?theme=serif#/themes">Serif</a>-
+        <a href="?theme=night#/themes">Night</a>-
+        <a href="?#/themes">Default</a>
+    </p>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">JavaScript tutorial maintained by <a href="https://github.com/defectus">defectus</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+    <p>
+        <small>* Theme demos are loaded after the presentation which leads to flicker.
+            In production you should load your theme in the
+            <code>&lt;head&gt;</code>using a
+            <code>&lt;link&gt;</code>.
+        </small>
+    </p>
+</section>
+<section>
+    <section data-state="alert">
+        <h2>Global State</h2>
 
-    
+        <p>Set
+            <code>data-state="something"</code>on a slide and
+            <code>"something"</code>will be added as a class to the document element when
+            the slide is open. This lets you apply broader style changes, like switching
+            the background.</p>
+        <a href="#" class="image navigate-down">
+            <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png"
+                 alt="Down arrow">
+        </a>
+    </section>
+    <section data-state="blackout">
+        <h2>"blackout"</h2>
+        <a href="#" class="image navigate-down">
+            <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png"
+                 alt="Down arrow">
+        </a>
+    </section>
+    <section data-state="soothe">
+        <h2>"soothe"</h2>
+        <a href="#" class="image navigate-next">
+            <img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow"
+                 style="-webkit-transform: rotate(-90deg);">
+        </a>
+    </section>
+</section>
+<section data-state="customevent">
+    <h2>Custom Events</h2>
 
-  </body>
+    <p>Additionally custom events can be triggered on a per slide basis by binding
+        to the
+        <code>data-state</code>name.</p>
+                    <pre>
+                        <code contenteditable style="font-size: 18px; margin-top: 20px;">Reveal.addEventListener(
+                            'customevent', function() { console.log( '"customevent"
+                            has fired' ); } );</code>
+                    </pre>
+</section>
+<section>
+    <h2>Clever Quotes</h2>
+
+    <p>These guys come in two forms, inline:
+        <q code="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">The
+            nice thing about standards is that there are so many to choose from</q>and
+        block:</p>
+    <blockquote code="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+        For years there has been a theory that millions of monkeys typing at random
+        on millions of typewriters would reproduce the entire works of Shakespeare.
+        The Internet has proven this theory to be untrue.
+    </blockquote>
+</section>
+<section>
+    <h2>Pretty Code</h2>
+                    <pre>
+                        <code contenteditable>function linkify( selector ) { if( supports3DTransforms ) { var nodes
+                            = document.querySelectorAll( selector ); for( var i = 0, len = nodes.length;
+                            i &lt; len; i++ ) { var node = nodes[i]; if( !node.className ) ) { node.className
+                            += ' roll'; } }; } }</code>
+                    </pre>
+    <p>Courtesy of
+        <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
+</section>
+<section>
+    <h2>Intergalactic Interconnections</h2>
+
+    <p>You can link between slides internally,
+        <a href="#/2/3">like this</a>.</p>
+</section>
+<section>
+    <section>
+        <h2>Fragmented Views</h2>
+
+        <p>Hit the next arrow...</p>
+
+        <p class="fragment">... to step through ...</p>
+        <ol>
+            <li class="fragment">
+                <code>any type</code>
+            </li>
+            <li class="fragment">
+                <em>of view</em>
+            </li>
+            <li class="fragment">
+                <strong>fragments</strong>
+            </li>
+        </ol>
+        <aside class="notes">This slide has fragments which are also stepped through in the notes window.</aside>
+    </section>
+    <section>
+        <h2>Fragment Styles</h2>
+
+        <p>There's a few styles of fragments, like:</p>
+
+        <p class="fragment grow">grow</p>
+
+        <p class="fragment shrink">shrink</p>
+
+        <p class="fragment roll-in">roll-in</p>
+
+        <p class="fragment fade-out">fade-out</p>
+
+        <p class="fragment highlight-red">highlight-red</p>
+
+        <p class="fragment highlight-green">highlight-green</p>
+
+        <p class="fragment highlight-blue">highlight-blue</p>
+    </section>
+</section>
+<section>
+    <h2>Spectacular image!</h2>
+    <a class="image" href="http://lab.hakim.se/meny/"
+       target="_blank">
+        <img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
+    </a>
+</section>
+<section>
+    <h2>Export to PDF</h2>
+
+    <p>Presentations can be
+        <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been
+        uploaded to SlideShare.</p>
+    <iframe id="slideshare"
+            src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455"
+            height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px"
+            allowfullscreen></iframe>
+    <script>
+        document.getElementById('slideshare').attributeName = 'allowfullscreen';
+    </script>
+</section>
+<section>
+    <h2>Take a Moment</h2>
+
+    <p>Press b or period on your keyboard to enter the 'paused' mode. This mode
+        is helpful when you want to take distracting slides off the screen during
+        a presentation.</p>
+</section>
+<section>
+    <h2>Stellar Links</h2>
+    <ul>
+        <li>
+            <a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a>
+        </li>
+        <li>
+            <a href="http://hakim.se/projects/reveal-js">Leave feedback on my site</a>
+        </li>
+        <li>
+            <a href="http://twitter.com/hakimel">Follow me on Twitter</a>
+        </li>
+    </ul>
+</section>
+<section>
+    <h2>It's free</h2>
+
+    <p>reveal.js and
+        <a href="http://www.rvl.io">rvl.io</a>are entirely free but if you'd like to support the projects you can donate
+        below. Donations will go towards hosting and domain costs.</p>
+
+    <form action="https://www.paypal.com/cgi-bin/webscr"
+          method="post">
+        <input type="hidden" name="cmd" value="_donations">
+        <input type="hidden" name="business" value="hakim.elhattab@gmail.com">
+        <input type="hidden" name="lc" value="US">
+        <input type="hidden" name="item_name" value="reveal.js / rvl.io">
+        <input type="hidden" name="no_note" value="0">
+        <input type="hidden" name="currency_code" value="USD">
+        <input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+               border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+    </form>
+</section>
+<section>
+    <h1>THE END</h1>
+
+    <h3>BY Hakim El Hattab / hakim.se</h3>
+</section>
+</div>
+</div>
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
+<script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: 'lib/js/classList.js',
+                condition: function () {
+                    return !document.body.classList;
+                }
+            },
+            {
+                src: 'plugin/markdown/showdown.js',
+                condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'plugin/markdown/markdown.js',
+                condition: function () {
+                    return !!document.querySelector('[data-markdown]');
+                }
+            },
+            {
+                src: 'plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            },
+            {
+                src: 'plugin/zoom-js/zoom.js',
+                async: true,
+                condition: function () {
+                    return !!document.body.classList;
+                }
+            },
+            {
+                src: 'plugin/notes/notes.js',
+                async: true,
+                condition: function () {
+                    return !!document.body.classList;
+                }
+            }
+            // { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+    });
+</script>
+</body>
+
 </html>
+
+        
+        
+        
+        
+        
+        
