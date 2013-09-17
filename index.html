@@ -439,6 +439,93 @@
         </li>
     </section>
 </section>
+<section>
+    <section>
+        <h2>jQuery</h2>
+        <li>first release in 2006</li>
+        <li>library that aims to standardize javascript access to DOM (abstraction layer)</li>
+        <li>adds many extra functions helping with common tasks (AJAX, animation, effects and more)</li>
+        <li>allows users to extend its functionality by adding plugins and new features</li>
+    </section>
+    <section>
+        <h2>mighty $</h2>
+        <li>$ is in javascript a valid function name</li>
+        <li>$ function returns collection of jQuery objects</li>
+        <li>$ as an object contains many useful functions (like each, map)</li>
+        <li>if you don't want to/can't use $ you can fallback on "jQuery" - $("p") == jQuery("p")</li>
+    </section>
+    <section>
+        <h2>$ use cases</h2>
+        <li>$ can be used as an element selector: $("p") selects all P elements in the current document</li>
+        <li>$ can be used as a wrapper: $(document) returns jQuery wrapped document object</li>
+        <li>$ can be used to create elements: $('<p/>') returns a new P element</li>
+        <li>$ can be used to access utility functions: $.ajax({ url: "/url",data: { key: "val" }}) calls /url?key=val</li>
+    </section>
+    <section>
+        <h2>selectors and further</h2>
+        <li>"element" - selects elements</li>
+        <li>".class" - selects elements having class</li>
+        <li>"#id" - selects elements of the id</li>
+        <li>"[attr=value][attr2=value2]"- selects elements where an attribute attr equals value and attribute attr2 equals value2</li>
+    </section>
+    <section>
+        <h2>more fun with selectors</h2>
+        <li>"element.class" element with a class</li>
+        <li>"element#id.class" element with a class and id</li>
+        <li>"element#id.class1\\.class2.class3" element with 2 classes (class1.class2 and class3) and id</li>
+        <li>"element1 element2" elements that have a (direct or indirect) parent element1</li>
+        <li>"element1>element2" elements that have a direct parent element1</li>
+    </section>    
+    <section>
+        <h2>even more fun with selectors</h2>
+        <li>"element1, element2" selects elements element1 and element2</li>
+        <li>"element1 + element2" selects elements2 that are immediatelly precedet by element1</li>
+        <li>"element1 ~ element2" selects all siblings of element2 following element1</li>
+        <li>"element:even, element:first, element:last" selects all even elements + first and last</li>
+    </section>    
+    <section>
+        <h2>events</h2>
+        <li>.on(events, elements, data, handler) - attaches a handler to listen for events</li>
+        <li>$("div").on("click", handler) - attaches handler to listen for click events all divs.</li>
+        <li>$("div").on("click dblclick", 'p.clickable', {data:'data'}, handler) - attaches handler to listen for click events on all p.clickable (now and in future) within all divs.</li>        
+    </section> 
+    <section>
+        <h2>event handlers</h2>
+        <li>false - if you to cancel that event straight away</li>
+        <li>a function that takes one parameter - the event - var handler = function (e) {...}</li>
+        <li>event.preventDefault() - if you don't want the event to actioned on</li>
+        <li>event.stopPropagation() - event will not bubble up</li>
+        <li>event.target - element triggering the event</li>
+        <li>event.data - arbitrary data provided during on() call</li>
+    </section>    
+    <section>
+        <h2>chaining</h2>
+        <li>jQuery allows code o be chained</li>
+        <li><pre><code>
+        $("div").css({color:'blue'}).on('click', handleClick).append(whatever);
+        </pre></code>
+        </li>
+    </section>    
+    <section>
+        <h2>ajax</h2>
+        <li></li>
+    </section>    
+    <section>
+        <h2>promises</h2>
+        <li></li>
+    </section>    
+    <section>
+        <h2>animation</h2>
+        <li></li>
+    </section>    
+    <section>
+        <h2>vanilla js</h2>
+        <li></li>
+    </section>    
+    
+
+    
+</section>
 <!-- Example of nested vertical slides -->
 <section>
     <section>
