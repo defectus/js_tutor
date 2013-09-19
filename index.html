@@ -503,24 +503,86 @@
         <li>jQuery allows code o be chained</li>
         <li><pre><code>
         $("div").css({color:'blue'}).on('click', handleClick).append(whatever);
-        </pre></code>
-        </li>
+        </code></pre></li>
+        <li>that's because many (not all!) functions return jquery object allowing calling additional functions</li>
+        <li>use it whenever possible - the most epxensive operation is to actually find something</li>
     </section>    
     <section>
-        <h2>ajax</h2>
-        <li></li>
-    </section>    
+        <h2>ajax - take 1</h2>
+        <li>load() - replaces body of element(s) with data loaded from a url</li>
+        <li><pre><code>
+        $("p.replaceMe").load( "ajax/replace.html");
+        $("p.replaceMeOnlyPart").load( "ajax/replace.html#replaceBit");
+        $("p.replaceMeWith", {what:'anything'}).load( "ajax/replaceWithParams"); // POST method used!
+        $("p.replaceMe", function(){alert('replaced')}).load( "ajax/replace"); 
+        </code></pre></li>      
+    </section> 
+    <section>
+        <h2>ajax - take 2</h2>
+        <li>$.get() - loads content</li>
+        <li><pre><code>
+        $.get("callMe") // ping - requests data but ignores result
+        $.get("getMe", function(data){alert("received:" + data)}) // calls and gets result
+        $.get("getMeWithParams", {param1:"val1"}, function(data){alert("received:" + data)}) // calls with paramters and gets result
+        </code></pre></li>      
+    </section>      
+    <section>
+        <h2>ajax - take 3</h2>
+        <li>$.ajax() - performs ajax calls</li>
+        <li><pre><code>
+        $.ajax({url:"ajax", success:function(data){alert("recevived:" + data)}}, error:function(data){"error:" + data.statusText}) 
+        $.ajax({url:"ajax", type: "POST", success:function(data){alert("recevived:" + data)}}, error:function(data){"error:" + data.statusText}) // use POST method
+        $.ajax({url:"ajax", type: "POST", data: {param1:"value1"}, success:function(data){alert("recevived:" + data)}}, error:function(data){"error:" + data.statusText}) // use POST with params
+        </code></pre></li>      
+    </section>      
     <section>
         <h2>promises</h2>
-        <li></li>
-    </section>    
+        <li>a functional way of dealing with asynchronous programing</li>
+        <li>a promise is a value that will be fulfilled later however can still be passed around</li>
+        <li><pre><code>
+        $.get("ajax").done(function(data) { alert("done:" + data)}) // when this ajax resolves call this function
+        </code></pre></li>
+    </section>  
     <section>
-        <h2>animation</h2>
-        <li></li>
+        <h2>more promises when -> then</h2>
+        <li>when allows to define a master promise based on combined promises</li>
+        <li><pre><code>
+        $.when($.ajax("getData1"), $.ajax("getData2")).then(function(data1, data2) { alert("done:" + data1 + data2)}, function(fail1, fail2){alert("failure:" + fail1 + fail2)}) // when all ajax resolve call this function
+        </code></pre></li>
+        <li>in case of single parameter the parameter is encapsulated as deffered</li>
+        <li><pre><code>
+        $.when($.ajax("getData1")).then(function(data1) { alert("done:" + data1)}, function(fail1){alert("failure:" + fail1)}) // when this ajax resolves call this function
+        </code></pre></li>   
+    </section>  
+    <section>
+        <h2>creating promises</h2>
+        <li>to centralize callbacks and allow passing them around a values we can create promises ourselves</li>
+        <li><pre><code>
+        var defo =  $.Deferred();
+        defo.done (function(data){alert("done1:" + data)}).done(function(data){alert("done2:" + data)})
+        $("body").on("click", function(){defo.resolve("val")})
+        </code></pre></li>
+        <li>if you want to rpevent others from messing with your deffered objects then return the underlying promise e.g. <code>defo.promise()</code> which disallows resolving, notifying etc.</li>
+    </section>  
+    <section>
+        <h2>animations</h2>
+        <li>the simplest <code>$("p").toggle()</code> shows/hide element(s) in 400ms</li>
+        <li>simultaneously <code>$("p").show({queue:false}).slideDown({queue:false})</code> both animations will run the same time</li>
+        <li>to stop running animations <code>$("p").stop().slideUp()</code></li>
+        <li>to chain <code>$("p").slideUp(function(){$(this).slideDown()}})</code></li>
     </section>    
     <section>
         <h2>vanilla js</h2>
-        <li></li>
+        <li>it's not shame to use vanilla javascript - many times it's much faster than JQuery</li>
+        <li>to get an element you can still do <code>document.getElementById("id")</code></li>
+        <li>any element can be converted into an JQuery object by $ - <code>$(document.getElementById("id"))</code></li>
+        <li>you get elements back from JQuery by <code>$("p").get(0)</code></li>
+        <li>to animate an element vanilla js style:</li>
+        <li><pre><code>
+        var s = document.getElementById('thing').style; 
+        s.opacity = 1; 
+        (function fade(){(s.opacity-=.1)&lt;0?s.display="none":setTimeout(fade,40)})();
+        </code></pre></li>
     </section>    
     
 
