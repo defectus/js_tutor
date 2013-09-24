@@ -597,10 +597,10 @@
                             <li>load() - replaces body of element(s) with data loaded from a url</li>
                         </ul>
                         <pre>
-                            <code class="javascript">$("p.replaceMe").load( "ajax/replace.html"); $("p.replaceMeOnlyPart").load(
-                                "ajax/replace.html#replaceBit"); $("p.replaceMeWith", {what:'anything'}).load(
-                                "ajax/replaceWithParams"); // POST method used! $("p.replaceMe", function(){alert('replaced')}).load(
-                                "ajax/replace");</code>
+                            <code class="javascript">$("p.replaceMe").load( "ajax/replace.html"); 
+                            $("p.replaceMeOnlyPart").load("ajax/replace.html#replaceBit"); 
+                            $("p.replaceMeWith").load("ajax/replaceWithParams",{what:'anything'}); // POST method used! 
+                            $("p.replaceMe".load("ajax/replace", function(){alert('replaced')}));</code>
                         </pre>
                     </section>
                     <section>
@@ -609,10 +609,10 @@
                             <li>$.get() - loads content</li>
                         </ul>
                         <pre>
-                            <code class="javascript">$.get("callMe") // ping - requests data but ignores result $.get("getMe",
-                                function(data){alert("received:" + data)}) // calls and gets result $.get("getMeWithParams",
-                                {param1:"val1"}, function(data){alert("received:" + data)}) // calls with
-                                paramters and gets result</code>
+                            <code class="javascript">$.get("callMe") // ping - requests data but ignores result 
+                            $.get("getMe", function(data){alert("received:" + data)}) // calls and gets result 
+                            $.get("getMeWithParams",{param1:"val1"}, function(data){alert("received:" + data)}) 
+                            // calls with paramters and gets result</code>
                         </pre>
                     </section>
                     <section>
@@ -621,11 +621,18 @@
                             <li>$.ajax() - performs ajax calls</li>
                         </ul>
                         <pre>
-                            <code class="javascript">$.ajax({url:"ajax", success:function(data){alert("recevived:" + data)}},
-                                error:function(data){"error:" + data.statusText}) $.ajax({url:"ajax", type:
-                                "POST", success:function(data){alert("recevived:" + data)}}, error:function(data){"error:"
-                                + data.statusText}) // use POST method $.ajax({url:"ajax", type: "POST",
-                                data: {param1:"value1"}, success:function(data){alert("recevived:" + data)}},
+                            <code class="javascript">$.ajax(
+                                {url:"ajax", 
+                                success:function(data){alert("recevived:" + data)}},
+                                error:function(data){"error:" + data.statusText})
+                                $.ajax({url:"ajax", 
+                                type:"POST", 
+                                success:function(data){alert("recevived:" + data)}}, 
+                                error:function(data){"error:"+ data.statusText}) // use POST method 
+                                $.ajax({url:"ajax", 
+                                type: "POST",
+                                data: {param1:"value1"}, 
+                                success:function(data){alert("recevived:" + data)}},
                                 error:function(data){"error:" + data.statusText}) // use POST with params</code>
                         </pre>
                     </section>
@@ -636,8 +643,8 @@
                             <li>a promise is a value that will be fulfilled later however can still be
                                 passed around</li>
                             <pre>
-                                <code class="javascript">$.get("ajax").done(function(data) { alert("done:" + data)}) // when this
-                                    ajax resolves call this function</code>
+                                <code class="javascript">$.get("ajax").done(function(data) { alert("done:" + data)}) 
+                                // when this ajax resolves call this function</code>
                             </pre>
                         </ul>
                     </section>
@@ -647,17 +654,17 @@
                             <li>when allows to define a master promise based on combined promises</li>
                             <li>
                                 <pre>
-                                    <code class="javascript">$.when($.ajax("getData1"), $.ajax("getData2")).then(function(data1, data2)
-                                        { alert("done:" + data1 + data2)}, function(fail1, fail2){alert("failure:"
-                                        + fail1 + fail2)}) // when all ajax resolve call this function</code>
+                                    <code class="javascript">$.when($.ajax("getData1"), $.ajax("getData2"))
+                                    .then(function(data1, data2) {alert("done:" + data1 + data2)},
+                                        function(fail1, fail2){alert("failure:" + fail1 + fail2)}) // when all ajax resolve call this function</code>
                                 </pre>
                             </li>
                             <li>in case of single parameter the parameter is encapsulated as deffered</li>
                             <li>
                                 <pre>
-                                    <code class="javascript">$.when($.ajax("getData1")).then(function(data1) { alert("done:" + data1)},
-                                        function(fail1){alert("failure:" + fail1)}) // when this ajax resolves
-                                        call this function</code>
+                                    <code class="javascript">$.when($.ajax("getData1"))
+                                    .then(function(data1) { alert("done:" + data1)},
+                                        function(fail1){alert("failure:" + fail1)}) // when this ajax resolves call this function</code>
                                 </pre>
                             </li>
                         </ul>
@@ -669,8 +676,10 @@
                                 create promises ourselves</li>
                             <li>
                                 <pre>
-                                    <code class="javascript">var defo = $.Deferred(); defo.done (function(data){alert("done1:" + data)}).done(function(data){alert("done2:"
-                                        + data)}) $("body").on("click", function(){defo.resolve("val")})</code>
+                                    <code class="javascript">var defo = $.Deferred(); 
+                                    defo.done (function(data){alert("done1:" + data)})
+                                    .done(function(data){alert("done2:" + data)}) 
+                                    $("body").on("click", function(){defo.resolve("val")})</code>
                                 </pre>
                             </li>
                             <li>if you want to prevent others from messing with your deffered objects
@@ -763,8 +772,9 @@
                         <h2>vanilla js animate</h2>
                         <li>to animate an element vanilla js style:</li>
                         <pre>
-                            <code class="javascript">var s = document.getElementById('toFade').style; s.opacity = 1; (function
-                                fade(){(s.opacity-=.1)&lt;0?s.display="none":setTimeout(fade,40)})();</code>
+                            <code class="javascript">var s = document.getElementById('toFade').style; 
+                            s.opacity = 1; 
+                            (function fade(){(s.opacity-=.1)&lt;0?s.display="none":setTimeout(fade,40)})();</code>
                         </pre>
                     </section>
                 </section>
