@@ -734,13 +734,13 @@
                                 debug(this);
                                 return this.each(function() {
                                     var markup = $this.html();
-                                    markup = "<strong>" + txt + "</strong>"
+                                    markup = "&lt;strong&gt;" + txt + "&lt;/strong&gt;"
                                     $this.html( markup );                                
                                     });
                             };
                             // Private function for debugging.
                             function debug( $obj ) {
-                                if ( window.console && window.console.log ) {
+                                if ( window.console &amp;&amp; window.console.log ) {
                                     window.console.log( "selection count: " + $obj.size() );
                                 }
                             };
