@@ -596,10 +596,11 @@
                             <li>load() - replaces body of element(s) with data loaded from a url</li>
                         </ul>
                         <pre>
-                            <code class="javascript">$("p.replaceMe").load( "ajax/replace.html"); 
-                            $("p.replaceMeOnlyPart").load("ajax/replace.html#replaceBit"); 
-                            $("p.replaceMeWith").load("ajax/replaceWithParams",{what:'anything'}); // POST method used! 
-                            $("p.replaceMe".load("ajax/replace", function(){alert('replaced')}));</code>
+                            <code class="javascript">
+$("p.replaceMe").load( "ajax/replace.html"); 
+$("p.replaceMeOnlyPart").load("ajax/replace.html#replaceBit"); 
+$("p.replaceMeWith").load("ajax/replaceWithParams",{what:'anything'}); // POST method used! 
+$("p.replaceMe".load("ajax/replace", function(){alert('replaced')}));</code>
                         </pre>
                     </section>
                     <section>
@@ -608,10 +609,10 @@
                             <li>$.get() - loads content</li>
                         </ul>
                         <pre>
-                            <code class="javascript">$.get("callMe") // ping - requests data but ignores result 
-                            $.get("getMe", function(data){alert("received:" + data)}) // calls and gets result 
-                            $.get("getMeWithParams",{param1:"val1"}, function(data){alert("received:" + data)}) 
-                            // calls with paramters and gets result</code>
+                            <code class="javascript">
+$.get("callMe") // ping - requests data but ignores result 
+$.get("getMe", function(data){alert("received:" + data)}) // calls and gets result 
+$.get("getMeWithParams",{param1:"val1"}, function(data){alert("received:" + data)})  // calls with paramters and gets result</code>
                         </pre>
                     </section>
                     <section>
@@ -620,19 +621,20 @@
                             <li>$.ajax() - performs ajax calls</li>
                         </ul>
                         <pre>
-                            <code class="javascript">$.ajax(
-                                {url:"ajax", 
-                                success:function(data){alert("recevived:" + data)}},
-                                error:function(data){"error:" + data.statusText})
-                                $.ajax({url:"ajax", 
-                                type:"POST", 
-                                success:function(data){alert("recevived:" + data)}}, 
-                                error:function(data){"error:"+ data.statusText}) // use POST method 
-                                $.ajax({url:"ajax", 
-                                type: "POST",
-                                data: {param1:"value1"}, 
-                                success:function(data){alert("recevived:" + data)}},
-                                error:function(data){"error:" + data.statusText}) // use POST with params</code>
+                            <code class="javascript">
+$.ajax(
+    {url:"ajax", 
+    success:function(data){alert("recevived:" + data)}},
+    error:function(data){"error:" + data.statusText})
+    $.ajax({url:"ajax", 
+    type:"POST", 
+    success:function(data){alert("recevived:" + data)}}, 
+    error:function(data){"error:"+ data.statusText}) // use POST method 
+    $.ajax({url:"ajax", 
+    type: "POST",
+    data: {param1:"value1"}, 
+    success:function(data){alert("recevived:" + data)}},
+    error:function(data){"error:" + data.statusText}) // use POST with params</code>
                         </pre>
                     </section>
                     <section>
@@ -642,8 +644,9 @@
                             <li>a promise is a value that will be fulfilled later however can still be
                                 passed around</li>
                             <pre>
-                                <code class="javascript">$.get("ajax").done(function(data) { alert("done:" + data)}) 
-                                // when this ajax resolves call this function</code>
+                                <code class="javascript">
+$.get("ajax").done(function(data) { alert("done:" + data)}) 
+// when this ajax resolves call this function</code>
                             </pre>
                         </ul>
                     </section>
@@ -653,17 +656,19 @@
                             <li>when allows to define a master promise based on combined promises</li>
                             <li>
                                 <pre>
-                                    <code class="javascript">$.when($.ajax("getData1"), $.ajax("getData2"))
-                                    .then(function(data1, data2) {alert("done:" + data1 + data2)},
-                                        function(fail1, fail2){alert("failure:" + fail1 + fail2)}) // when all ajax resolve call this function</code>
+                                    <code class="javascript">
+$.when($.ajax("getData1"), $.ajax("getData2"))
+.then(function(data1, data2) {alert("done:" + data1 + data2)},
+    function(fail1, fail2){alert("failure:" + fail1 + fail2)}) // when all ajax resolve call this function</code>
                                 </pre>
                             </li>
                             <li>in case of single parameter the parameter is encapsulated as deffered</li>
                             <li>
                                 <pre>
-                                    <code class="javascript">$.when($.ajax("getData1"))
-                                    .then(function(data1) { alert("done:" + data1)},
-                                        function(fail1){alert("failure:" + fail1)}) // when this ajax resolves call this function</code>
+                                    <code class="javascript">
+$.when($.ajax("getData1"))
+.then(function(data1) { alert("done:" + data1)},
+    function(fail1){alert("failure:" + fail1)}) // when this ajax resolves call this function</code>
                                 </pre>
                             </li>
                         </ul>
@@ -675,10 +680,11 @@
                                 create promises ourselves</li>
                             <li>
                                 <pre>
-                                    <code class="javascript">var defo = $.Deferred(); 
-                                    defo.done (function(data){alert("done1:" + data)})
-                                    .done(function(data){alert("done2:" + data)}) 
-                                    $("body").on("click", function(){defo.resolve("val")})</code>
+                                    <code class="javascript">
+var defo = $.Deferred(); 
+defo.done (function(data){alert("done1:" + data)})
+.done(function(data){alert("done2:" + data)}) 
+$("body").on("click", function(){defo.resolve("val")})</code>
                                 </pre>
                             </li>
                             <li>if you want to prevent others from messing with your deffered objects
@@ -728,23 +734,24 @@
                         <h2>extending jQuery</h2>
                         <li>a quick example of a plugin below</li>
                         <ul>
-                            <pre><code class="javascript">(function($) { // closure
-                            // Plugin starts here
-                            $.fn.hilight = function( options ) {
-                                debug(this);
-                                return this.each(function() {
-                                    var markup = $this.html();
-                                    markup = "&lt;strong&gt;" + txt + "&lt;/strong&gt;"
-                                    $this.html( markup );                                
-                                    });
-                            };
-                            // Private function for debugging.
-                            function debug( $obj ) {
-                                if ( window.console &amp;&amp; window.console.log ) {
-                                    window.console.log( "selection count: " + $obj.size() );
-                                }
-                            };
-                            })(jQuery); // we call the closure straight away
+                            <pre><code class="javascript">
+(function($) { // closure
+    // Plugin starts here
+    $.fn.hilight = function( options ) {
+        debug(this);
+        return this.each(function() {
+            var markup = $this.html();
+            markup = "&lt;strong&gt;" + txt + "&lt;/strong&gt;"
+            $this.html( markup );                                
+            });
+    };
+    // Private function for debugging.
+    function debug( $obj ) {
+        if ( window.console &amp;&amp; window.console.log ) {
+            window.console.log( "selection count: " + $obj.size() );
+        }
+    };
+})(jQuery); // we call the closure straight away
                             </code></pre>
                         </ul>
                     </section>
