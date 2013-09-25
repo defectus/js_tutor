@@ -729,8 +729,8 @@
                         <h2>extending jQuery</h2>
                         <li>a quick example of a plugin below</li>
                         <ul>
-                            <pre><code class="javascript">(function($) {
-                            // Plugin definition.
+                            <pre><code class="javascript">(function($) { // closure
+                            // Plugin starts here
                             $.fn.hilight = function( options ) {
                                 debug(this);
                                 return this.each(function() {
@@ -740,12 +740,12 @@
                                     });
                             };
                             // Private function for debugging.
-                                function debug( $obj ) {
+                            function debug( $obj ) {
                                 if ( window.console && window.console.log ) {
-                                window.console.log( "selection count: " + $obj.size() );
+                                    window.console.log( "selection count: " + $obj.size() );
                                 }
                             };
-                            })(jQuery);
+                            })(jQuery); // we call the closure straight away
                             </code></pre>
                         </ul>
                     </section>
