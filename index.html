@@ -727,8 +727,26 @@
                     </section>
                     <section>
                         <h2>extending jQuery</h2>
+                        <li>a quick example of a plugin below</li>
                         <ul>
-                            <li></li>
+                            <pre><code class="javascript">(function($) {
+                            // Plugin definition.
+                            $.fn.hilight = function( options ) {
+                                debug(this);
+                                return this.each(function() {
+                                    var markup = $this.html();
+                                    markup = "<strong>" + txt + "</strong>"
+                                    $this.html( markup );                                
+                                    });
+                            };
+                            // Private function for debugging.
+                                function debug( $obj ) {
+                                if ( window.console && window.console.log ) {
+                                window.console.log( "selection count: " + $obj.size() );
+                                }
+                            };
+                            })(jQuery);
+                            </code></pre>
                         </ul>
                     </section>
                     <section>
