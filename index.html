@@ -628,12 +628,12 @@ $.get("getMeWithParams",{param1:"val1"}, function(data){alert("received:" + data
 $.ajax(
     {url:"ajax", 
     success:function(data){alert("recevived:" + data)}},
-    error:function(data){"error:" + data.statusText})
-    $.ajax({url:"ajax", 
+    error:function(data){"error:" + data.statusText});
+$.ajax({url:"ajax", 
     type:"POST", 
     success:function(data){alert("recevived:" + data)}}, 
     error:function(data){"error:"+ data.statusText}) // use POST method 
-    $.ajax({url:"ajax", 
+$.ajax({url:"ajax", 
     type: "POST",
     data: {param1:"value1"}, 
     success:function(data){alert("recevived:" + data)}},
@@ -657,23 +657,19 @@ $.get("ajax").done(function(data) { alert("done:" + data)})
                         <h2>more promises when -> then</h2>
                         <ul>
                             <li>when allows to define a master promise based on combined promises</li>
-                            <li>
                                 <pre>
                                     <code class="javascript">
 $.when($.ajax("getData1"), $.ajax("getData2"))
 .then(function(data1, data2) {alert("done:" + data1 + data2)},
     function(fail1, fail2){alert("failure:" + fail1 + fail2)}) // when all ajax resolve call this function</code>
                                 </pre>
-                            </li>
                             <li>in case of single parameter the parameter is encapsulated as deffered</li>
-                            <li>
                                 <pre>
                                     <code class="javascript">
 $.when($.ajax("getData1"))
 .then(function(data1) { alert("done:" + data1)},
     function(fail1){alert("failure:" + fail1)}) // when this ajax resolves call this function</code>
                                 </pre>
-                            </li>
                         </ul>
                     </section>
                     <section>
@@ -681,7 +677,6 @@ $.when($.ajax("getData1"))
                         <ul>
                             <li>to centralize callbacks and allow passing them around a values we can
                                 create promises ourselves</li>
-                            <li>
                                 <pre>
                                     <code class="javascript">
 var defo = $.Deferred(); 
@@ -689,7 +684,6 @@ defo.done (function(data){alert("done1:" + data)})
 .done(function(data){alert("done2:" + data)}) 
 $("body").on("click", function(){defo.resolve("val")})</code>
                                 </pre>
-                            </li>
                             <li>if you want to prevent others from messing with your deffered objects
                                 then return the underlying promise e.g.
                                 <code>defo.promise()</code>which disallows resolving, notifying etc.</li>
