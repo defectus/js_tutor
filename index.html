@@ -750,10 +750,11 @@ $("body").on("click", function(){defo.resolve("val")})</code>
 (function($) { // closure
     // Plugin starts here
     $.fn.hilight = function( options ) {
+        var $this = this;
         debug(this);
         return this.each(function() {
             var markup = $this.html();
-            markup = "&lt;strong&gt;" + txt + "&lt;/strong&gt;"
+            markup = "<strong>" + markup + "</strong>"
             $this.html( markup );                                
             });
     };
