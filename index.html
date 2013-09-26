@@ -507,63 +507,62 @@
                             <li>$ is in javascript a valid function name</li>
                             <li>$ function returns collection of jQuery objects</li>
                             <li>$ as an object contains many useful functions (like each, map)</li>
-                            <li>if you don't want to/can't use $ you can fallback on "jQuery" - $("p")
-                                == jQuery("p")</li>
+                            <li>if you don't want to/can't use $ you can fallback to <code>jQuery" - $("p")
+                                == jQuery("p")</code></li>
                         </ul>
                     </section>
                     <section>
                         <h2>$ use cases</h2>
                         <ul>
-                            <li>$ can be used as an element selector: $("p") selects all P elements in
+                            <li>$ can be used as an element selector: <code>$("p")</code> selects all P elements in
                                 the current document</li>
-                            <li>$ can be used as a wrapper: $(document) returns jQuery wrapped document
+                            <li>$ can be used as a wrapper: <code>$(document)</code> returns jQuery wrapped document
                                 object</li>
-                            <li>$ can be used to create elements: $('
-                                <p/>') returns a new P element</li>
-                            <li>$ can be used to access utility functions: $.ajax({ url: "/url",data:
-                                { key: "val" }}) calls /url?key=val</li>
+                            <li>$ can be used to create elements: <code>$('<p/>')</code> returns a new P element</li>
+                            <li>$ can be used to access utility functions: <code>$.ajax({ url: "/url",data:
+                            { key: "val" }})</code> calls /url?key=val</li>
                         </ul>
                     </section>
                     <section>
                         <h2>selectors and further</h2>
                         <ul>
-                            <li>"element" - selects elements</li>
-                            <li>".class" - selects elements having class</li>
-                            <li>"#id" - selects elements of the id</li>
-                            <li>"[attr=value][attr2=value2]"- selects elements where an attribute attr
+                            <li><code>tag</code> - selects elements by tag name</li>
+                            <li><code>.class</code> - selects elements having class</li>
+                            <li><code>#id</code> - selects elements of the id</li>
+                            <li><code>[attr=value][attr2=value2]</code>- selects elements where an attribute attr
                                 equals value and attribute attr2 equals value2</li>
                         </ul>
                     </section>
                     <section>
                         <h2>more fun with selectors</h2>
                         <ul>
-                            <li>"element.class" element with a class</li>
-                            <li>"element#id.class" element with a class and id</li>
-                            <li>"element#id.class1\\.class2.class3" element with 2 classes (class1.class2
+                            <li><code>tag.class</code> tag with a class</li>
+                            <li><code>tag#id.class</code> tag with a class and id</li>
+                            <li><code>tag#id.class1\\.class2.class3</code> tag with 2 classes (class1.class2
                                 and class3) and id</li>
-                            <li>"element1 element2" elements that have a (direct or indirect) parent element1</li>
-                            <li>"element1>element2" elements that have a direct parent element1</li>
+                            <li><code>tag1 tag2</code> tags that have a (direct or indirect) parent tag2</li>
+                            <li><code>tag1>tagt2</code> tags that have a direct parent tag2</li>
                         </ul>
                     </section>
                     <section>
                         <h2>even more fun with selectors</h2>
                         <ul>
-                            <li>"element1, element2" selects elements element1 and element2</li>
-                            <li>"element1 + element2" selects elements2 that are immediatelly precedet
-                                by element1</li>
-                            <li>"element1 ~ element2" selects all siblings of element2 following element1</li>
-                            <li>"element:even, element:first, element:last" selects all even elements
+                            <li><code>tag1, tag2</code> selects elements of tag1 and tag2</li>
+                            <li><code>tag1 + tag2</code> selects tags2 that are immediatelly precedet
+                                by tags2</li>
+                            <li><code>tag1 ~ tag2</code> selects all siblings of tag2 following tag1</li>
+                            <li><code>tag:even, tag:first, tag:last</code> selects all even tags
                                 + first and last</li>
                         </ul>
                     </section>
                     <section>
                         <h2>events</h2>
                         <ul>
-                            <li>.on(events, elements, data, handler) - attaches a handler to listen for
+                            <li><code>.on(events, elements, data, handler)<code> - attaches a handler to listen for
                                 events</li>
-                            <li>$("div").on("click", handler) - attaches handler to listen for click events
+                            <li><code>$("div").on("click", handler)</code> - attaches handler to listen for click events
                                 all divs.</li>
-                            <li>$("div").on("click dblclick", 'p.clickable', {data:'data'}, handler) -
+                            <li><code>$("div").on("click dblclick", 'p.clickable', {data:'data'}, handler)</code> -
                                 attaches handler to listen for click events on all p.clickable (now and
                                 in future) within all divs.</li>
                         </ul>
@@ -571,13 +570,13 @@
                     <section>
                         <h2>event handlers</h2>
                         <ul>
-                            <li>false - if you to cancel that event straight away</li>
-                            <li>a function that takes one parameter - the event - var handler = function
-                                (e) {...}</li>
-                            <li>event.preventDefault() - if you don't want the event to actioned on</li>
-                            <li>event.stopPropagation() - event will not bubble up</li>
-                            <li>event.target - element triggering the event</li>
-                            <li>event.data - arbitrary data provided during on() call</li>
+                            <li><code>false</code> - if you to cancel that event straight away</li>
+                            <li>a function that takes one parameter - the event - <code>var handler = function
+                                (e) {...}</code></li>
+                            <li><code>event.preventDefault()</code> - if you don't want the event to actioned on</li>
+                            <li><code>event.stopPropagation()</code> - event will not bubble up</li>
+                            <li><code>event.target</code> - element triggering the event</li>
+                            <li><code>event.data</code> - arbitrary data provided during on() call</li>
                         </ul>
                     </section>
                     <section>
@@ -596,7 +595,7 @@
                     <section>
                         <h2>ajax - take 1</h2>
                         <ul>
-                            <li>load() - replaces body of element(s) with data loaded from a url</li>
+                            <li><code>load()</code> - replaces body of element(s) with data loaded from a url</li>
                         </ul>
                         <pre>
                             <code class="javascript">
@@ -609,7 +608,7 @@ $("p.replaceMe".load("ajax/replace", function(){alert('replaced')}));</code>
                     <section>
                         <h2>ajax - take 2</h2>
                         <ul>
-                            <li>$.get() - loads content</li>
+                            <li><code>$.get()</code> - loads content</li>
                         </ul>
                         <pre>
                             <code class="javascript">
@@ -621,7 +620,7 @@ $.get("getMeWithParams",{param1:"val1"}, function(data){alert("received:" + data
                     <section>
                         <h2>ajax - take 3</h2>
                         <ul>
-                            <li>$.ajax() - performs ajax calls</li>
+                            <li><code>$.ajax()</code> - performs ajax calls</li>
                         </ul>
                         <pre>
                             <code class="javascript">
@@ -707,21 +706,21 @@ $("body").on("click", function(){defo.resolve("val")})</code>
                     <section>
                         <h2>utility functions</h2>
                         <ul>
-                            <li>$.each() - iterates over an array or object
+                            <li><code>$.each()</code> - iterates over an array or object
                                 <code>$.each({key:"value", function( k, v ) {alert("Key: " + k + ", Value: "
                                     + v )})</code>
                             </li>
-                            <li>$.data() - stores/reads data at element level
+                            <li><code>$.data()</code> - stores/reads data at element level
                                 <code>$.data(document.body, "data", "value"); alert($.data(document.body, "data"))</code>
                             </li>
-                            <li>$.map() - applies a function on all array items and return results as
+                            <li><code>$.map()</code> - applies a function on all array items and return results as
                                 a new array
                                 <code>$.map(['a','b','c'], function(a,i){return a.toUpperCase() + i})</code>
                             </li>
-                            <li>$.parseJSON() - converts JSON string into JS object
+                            <li><code>$.parseJSON()</code> - converts JSON string into JS object
                                 <code>$.parseJSON('{ "key": "val" }')</code>
                             </li>
-                            <li>$.extend() - merges a target object so it contains all fields of the source
+                            <li><code>$.extend()</code> - merges a target object so it contains all fields of the source
                                 object
                                 <code>$.extend({a:'a',b:'b'}, {b:'bb',c:'cc'}) // returns {a:'a',b:'bb',c:'cc'}</code>
                             </li>
@@ -791,9 +790,10 @@ $("body").on("click", function(){defo.resolve("val")})</code>
                         <h2>vanilla js animate</h2>
                         <li>to animate an element vanilla js style:</li>
                         <pre>
-                            <code class="javascript">var s = document.getElementById('toFade').style; 
-                            s.opacity = 1; 
-                            (function fade(){(s.opacity-=.1)&lt;0?s.display="none":setTimeout(fade,40)})();</code>
+                            <code class="javascript">
+var s = document.getElementById('toFade').style; 
+s.opacity = 1; 
+(function fade(){(s.opacity-=.1)&lt;0?s.display="none":setTimeout(fade,40)})();</code>
                         </pre>
                     </section>
                 </section>
