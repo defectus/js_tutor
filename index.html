@@ -815,6 +815,36 @@ s.opacity = 1;
                         </pre>
                     </section>
                 </section>
+                <section>
+                    <section>
+                        <h2>functional javascript</h2>
+                        <li>functions first class citizens</li>
+                        <li>functions take functions as paramters, return funtions</li>
+                        <li>functions have no side-effects (global no state changing)</li>
+                    </section>
+                    <section>
+                        <h2>filter</h2>
+                        <ul>
+                            <li>filter iterates over an array (or array like structre) and calling a supplied function returns a new array of elements identified by the function as passing</li>
+                        </ul>
+                        <pre><code class="javascript">
+[0,1,2,3,4,5].filter(function(v){return v &gt; 2}); // [3,4,5]
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>map</h2>
+                        <ul>
+                            <li>map iterates over an array and applies a function to each memeber. Then it collects the results and return as a new array.</li>
+                        </ul>
+                        <pre><code class="javascript">
+var times2 = function(v){return v * 2};
+[0,2,4,8,16].map(times2); // [0, 4, 8, 16, 32]
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>reduce</h2>
+                    </section>
+                </section>
                 <!-- Example of nested vertical slides -->
             </div>
         </div>
