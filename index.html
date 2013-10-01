@@ -843,6 +843,17 @@ var times2 = function(v){return v * 2};
                     </section>
                     <section>
                         <h2>reduce</h2>
+                        <ul>
+                            <li>applies a function to reduce an array to one value. the reduce callback takes parameters of the previous value (or the value so far), current value, index and the array</li>
+                        <pre><code class="javascript">
+var sum = function(p, c, i){console.log('p:['+p+'];c:['+c+'];i:['+i+']');return p + c};
+[0,2,4,8,16].reduce(sum); // 30 
+var max = function(p, c, i){console.log('p:['+p+'];c:['+c+'];i:['+i+']');return c > p ? c : p};
+[0,2,4,8,16].reduce(max); // 16
+var grouper = function(p, c, i){console.log('p:['+p+'];c:['+c+'];i:['+i+']');p[c]= (p[c]||0) + 1;return p};
+[0,2,4,8,16,8,4,2].reduce(grouper,{}); // 16 
+                        </code></pre>
+                        </ul>
                     </section>
                 </section>
                 <!-- Example of nested vertical slides -->
