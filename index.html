@@ -850,7 +850,7 @@ var times2 = function(v){return v * 2};
                         <pre><code class="javascript">
 var sum = function(p, c, i){console.log('p:['+p+'];c:['+c+'];i:['+i+']');return p + c};
 [0,2,4,8,16].reduce(sum); // 30 
-var max = function(p, c, i){console.log('p:['+p+'];c:['+c+'];i:['+i+']');return c > p ? c : p};
+var max = function(p, c, i){console.log('p:['+p+'];c:['+c+'];i:['+i+']');return c &gt; p ? c : p};
 [0,2,4,8,16].reduce(max); // 16
 var grouper = function(p, c, i){console.log('p:['+p+'];c:['+c+'];i:['+i+']');p[c]= (p[c]||0) + 1;return p};
 [0,2,4,8,16,8,4,2].reduce(grouper,{}); // 16 
