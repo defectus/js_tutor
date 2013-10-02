@@ -500,6 +500,7 @@
                                 effects and more)</li>
                             <li>allows users to extend its functionality by adding plugins and new features</li>
                         </ul>
+                        <a href="http://jsfiddle.net/4YmgY/2/">jsfiddle link</a>
                     </section>
                     <section>
                         <h2>jQuery</h2>
@@ -847,6 +848,7 @@ var times2 = function(v){return v * 2};
                         <h2>reduce</h2>
                         <ul>
                             <li>applies a function to reduce an array to one value. the reduce callback takes parameters of the previous value (or the value so far), current value, index and the array</li>
+                        </ul>
                         <pre><code class="javascript">
 var sum = function(p, c, i){console.log('p:['+p+'];c:['+c+'];i:['+i+']');return p + c};
 [0,2,4,8,16].reduce(sum); // 30 
@@ -855,6 +857,14 @@ var max = function(p, c, i){console.log('p:['+p+'];c:['+c+'];i:['+i+']');return 
 var grouper = function(p, c, i){console.log('p:['+p+'];c:['+c+'];i:['+i+']');p[c]= (p[c]||0) + 1;return p};
 [0,2,4,8,16,8,4,2].reduce(grouper,{}); // 16 
                         </code></pre>
+                    </section>
+                    <section>
+                        <h2>mapreduce</h2>
+                        <ul>
+                            <li>combines several functional principles to allow distributed processing and a mass scale</li>
+                            <li>map and reduce functions doesn't use shared state</li>
+                            <li>mapper and reducers "emit" results as they go</li>
+                            <li>map reduce systems allow passing intermediate results between nodes</li>
                         </ul>
                     </section>
                 </section>
